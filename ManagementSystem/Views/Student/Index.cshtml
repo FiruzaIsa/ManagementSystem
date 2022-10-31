@@ -1,0 +1,50 @@
+﻿@model IEnumerable<ManagementSystem.Models.Student>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<p>
+    <a class="btn btn-dark" asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EnrollmentDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+   @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EnrollmentDate)
+            </td>
+            <td class="button">
+                    @Html.ActionLink("Edit", "Edit", new {  id=item.Id },new { @class = "btn btn-outline-dark" })               
+                    @Html.ActionLink("Details", "Details", new {  id=item.Id  },new { @class = "btn btn-outline-dark" })
+                   @* @Html.ActionLink("Delete", "Delete", new { id=item.Id },new { @class = "btn  btn-outline-dark" })*@
+                    <form asp-action="Delete" asp-route-id="@item.Id" class="d-inline-block">
+                        <input type="submit" value="Delete" class="btn btn-outline-dark" />
+                    </form>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,47 @@
+﻿@model ManagementSystem.Models.Enrollment
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+
+<h4>Ogrenci kaydi</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="mt-2">
+                <label asp-for="CourseID" class="control-label">Ders</label>
+                <select asp-for="CourseID" class ="form-control" asp-items="ViewBag.Course">
+                    <option>Ders sec</option>
+                </select>
+                <span asp-validation-for="CourseID" class="text-danger"></span>
+            </div>
+            <div class="mt-2">
+                <label asp-for="StudentID" class="control-label">Ogrenci</label>
+                <select asp-for="StudentID" class ="form-control" asp-items="ViewBag.Student">
+                    <option>Ogrenci sec</option>
+                </select>
+            </div>
+            <div class="mt-2">
+                <label asp-for="Grade" class="control-label">Not</label>
+                <select asp-for="Grade" class="form-control" asp-items="Html.GetEnumSelectList<Grade>()">
+                    <option>Not</option>
+                </select>
+            </div>
+            <div class="mt-2">
+                <input type="submit" value="Create" class="btn btn-outline-dark"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="mt-2">
+    <a class="btn btn-outline-dark" asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

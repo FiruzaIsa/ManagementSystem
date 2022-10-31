@@ -1,0 +1,43 @@
+﻿@model ManagementSystem.Models.Instructor
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+<h4>Duzenle</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StarDate" class="control-label"></label>
+                <input asp-for="StarDate" class="form-control" />
+                <span asp-validation-for="StarDate" class="text-danger"></span>
+            </div>
+            <div class="mt-2">
+                <input type="submit" value="Save" class="btn btn-outline-dark"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-outline-dark" asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
